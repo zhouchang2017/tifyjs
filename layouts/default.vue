@@ -15,7 +15,7 @@
                 <nuxt/>
             </v-container>
         </v-content>
-        <v-footer :fixed="fixed" app>
+        <v-footer class="hidden-sm-and-down" :fixed="fixed" app>
             <span>&copy; 2017</span>
         </v-footer>
         <v-bottom-nav class="hidden-md-and-up"  :value="true" :active.sync="e1" color="transparent">
