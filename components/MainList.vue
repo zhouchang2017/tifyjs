@@ -30,7 +30,7 @@
 export default {
   components: {
     'panel-header': () =>
-      import('~/components/PanelHeader')
+      import ('~/components/PanelHeader')
   },
   data: () => ({
     items: [
@@ -44,29 +44,30 @@ export default {
     ],
     lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
   }),
-  mounted () {
+  mounted() {
     for (let i = 0; i <= 50; i++) {
       this.items.push(this.items[0])
       this.items.push(this.items[1])
     }
   },
   computed: {
-    bind () {
+    bind() {
       if (this.$vuetify.breakpoint.lg) {
-        return {'xs2': true}
+        return { 'xs2': true }
       }
       if (this.$vuetify.breakpoint.md) {
-        return {'xs2': true}
+        return { 'xs2': true }
       }
       if (this.$vuetify.breakpoint.sm) {
-        return {'xs2': true}
+        return { 'xs2': true }
       }
       if (this.$vuetify.breakpoint.xs) {
-        return {'xs3': true}
+        return { 'xs3': true }
       }
     }
   }
 }
+
 </script>
 <style scoped>
 

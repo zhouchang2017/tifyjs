@@ -1,55 +1,64 @@
 <template>
-  <v-layout col wrap>
-    <!-- 左右两栏布局 -->
-    <v-layout row wrap>
-      <v-flex d-flex xs12 sm6 md6>
-        <swiper/>
-      </v-flex>
-      <v-flex d-flex xs12 sm6 md6>
-        <post-col-list />
-      </v-flex>
-    </v-layout>
-    <!-- 中间三栏列表 -->
-    <middle-title-list/>
-    
-    <v-layout row wrap fill-height>
-      <v-flex d-flex xs12 sm6 md4>
-        <media-post/>
-      </v-flex>
-      <v-flex d-flex xs12 sm6 md4>
-        <new-post-recommend/>
-      </v-flex>
-      <v-flex d-flex xs12 sm6 md4>
-        <hot-list/>
-      </v-flex>
-      <v-flex d-flex xs12 sm12 md8>
-        <main-list/>
-      </v-flex>
-    </v-layout>
-  </v-layout>
+  <div>
+    <banner/>
+    <v-container grid-list-md class="mb-1">
+      <v-layout col wrap>
+        <!-- 左右两栏布局 -->
+       <!-- <v-layout row wrap>
+  <v-flex d-flex xs12 sm6 md6>
+    <swiper/>
+  </v-flex>
+  <v-flex d-flex xs12 sm6 md6>
+    <post-col-list />
+  </v-flex>
+</v-layout>
+ -->
+        <!-- 中间三栏列表 -->
+        <middle-title-list/>
+        <v-layout row wrap fill-height>
+          <v-flex d-flex xs12 sm6 md4>
+            <media-post/>
+          </v-flex>
+          <v-flex d-flex xs12 sm6 md4>
+            <new-post-recommend/>
+          </v-flex>
+          <v-flex d-flex xs12 sm6 md4>
+            <hot-list/>
+          </v-flex>
+          <v-flex d-flex xs12 sm12 md8>
+            <main-list/>
+          </v-flex>
+        </v-layout>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 <script>
 export default {
   components: {
+    'banner': () =>
+      import ('~/components/Banner'),
+
     'middle-title-list': () =>
-      import('~/components/MiddleTitleList'),
+      import ('~/components/MiddleTitleList'),
     'new-post-recommend': () =>
-      import('~/components/NewPostRecommend'),
+      import ('~/components/NewPostRecommend'),
     'post-col-list': () =>
-      import('~/components/PostColList'),
+      import ('~/components/PostColList'),
     'swiper': () =>
-      import('~/components/Swiper'),
+      import ('~/components/Swiper'),
     'hot-list': () =>
-      import('~/components/HotList'),
+      import ('~/components/HotList'),
     'main-list': () =>
-      import('~/components/MainList'),
+      import ('~/components/MainList'),
     'media-post': () =>
-      import('~/components/MediaPost')
+      import ('~/components/MediaPost')
   },
-  data () {
+  data() {
     return {
 
     }
   }
 }
+
 </script>
