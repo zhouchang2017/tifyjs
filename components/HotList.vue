@@ -1,13 +1,6 @@
 <template>
-  <v-card class="elevation-0">
-    <v-toolbar color="teal" dark class="elevation-0">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title class="text-xs-center">New Chat</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>search</v-icon>
-      </v-btn>
-    </v-toolbar>
+  <v-card tile class="elevation-0">
+    <panel-header iconL="explore" iconR="list" title="一周热点"/>
     <v-list three-line dense>
       <v-list-tile v-for="n in 4" :key="n" @click="">
         <v-list-tile-content>
@@ -25,6 +18,9 @@
 <script>
 export default {
   name: 'hot-list',
+  components: {
+    'panel-header': () => import('~/components/PanelHeader')
+  },
   data () {
     return {}
   }

@@ -1,7 +1,7 @@
 <template>
     <v-app light>
         <v-toolbar  app>
-            <v-toolbar-title>Title</v-toolbar-title>
+            <v-toolbar-title>赖总的website</v-toolbar-title>
             <v-spacer></v-spacer>
             <!--<v-toolbar-side-icon @click.native="dialog = true" class="hidden-md-and-up"></v-toolbar-side-icon>-->
             <v-toolbar-items class="hidden-sm-and-down">
@@ -11,14 +11,14 @@
             </v-toolbar-items>
         </v-toolbar>
         <v-content>
-            <v-container grid-list-md>
+            <v-container grid-list-md class="mb-1">
                 <nuxt/>
             </v-container>
         </v-content>
         <v-footer class="hidden-sm-and-down" :fixed="fixed" app>
             <span>&copy; 2017</span>
         </v-footer>
-        <v-bottom-nav class="hidden-md-and-up"  :value="true" :active.sync="e1" color="transparent">
+        <v-bottom-nav app class="hidden-md-and-up"  :value="true" :active.sync="e1" color="grey lighten-4">
             <v-btn flat color="teal" value="recent">
                 <span>Recent</span>
                 <v-icon>history</v-icon>
