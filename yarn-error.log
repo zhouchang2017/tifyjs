@@ -1,0 +1,68 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js install vue -g
+
+PATH: 
+  /Users/changzhou/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.8.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "tifyjs",
+    "version": "1.0.0",
+    "description": "Nuxt.js + Vuetify.js project",
+    "author": "changzhou <290621352@qq.com>",
+    "private": true,
+    "scripts": {
+      "dev": "nuxt",
+      "build": "nuxt build",
+      "start": "nuxt start",
+      "generate": "nuxt generate"
+    },
+    "config": {
+      "nuxt": {
+        "host": "0.0.0.0",
+        "port": "3002"
+      }
+    },
+    "dependencies": {
+      "nuxt": "^1.4.0",
+      "vuetify": "^1.0.7"
+    },
+    "devDependencies": {
+      "@nuxtjs/localtunnel": "^1.0.1",
+      "babel-eslint": "^7.2.3",
+      "eslint": "^4.3.0",
+      "eslint-config-standard": "^10.2.1",
+      "eslint-loader": "^1.9.0",
+      "eslint-plugin-html": "^3.1.1",
+      "eslint-plugin-import": "^2.7.0",
+      "eslint-plugin-node": "^5.1.1",
+      "eslint-plugin-promise": "^3.5.0",
+      "eslint-plugin-standard": "^3.0.1",
+      "stylus": "^0.54.5",
+      "stylus-loader": "^3.0.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: `--global` has been deprecated. Please run "yarn global add vue" instead.
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at Object.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:21987:13)
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13
+      at <anonymous>

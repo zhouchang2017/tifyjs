@@ -13,9 +13,9 @@
         <v-content>
             <nuxt/>
         </v-content>
-        <v-footer class="hidden-sm-and-down" :fixed="fixed" app>
-            <span>&copy; 2017</span>
-        </v-footer>
+        <!--<v-footer class="hidden-sm-and-down" :fixed="fixed" app>-->
+            <!--<span>&copy; 2017</span>-->
+        <!--</v-footer>-->
         <v-bottom-nav app class="hidden-md-and-up" :value="true" :active.sync="e1" color="grey lighten-4">
             <v-btn flat color="teal" value="recent">
                 <span>Recent</span>

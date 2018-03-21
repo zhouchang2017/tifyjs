@@ -17,8 +17,8 @@
     }
   },
   "dependencies": {
-    "nuxt": "^1.0.0",
-    "vuetify": "^0.17.4"
+    "nuxt": "^1.4.0",
+    "vuetify": "^1.0.7"
   },
   "devDependencies": {
     "@nuxtjs/localtunnel": "^1.0.1",

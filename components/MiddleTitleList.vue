@@ -1,6 +1,6 @@
 <template>
-  <v-layout row wrap>
-    <v-flex xs6 sm6 md4 v-for="n in 6" :key="n">
+  <v-layout  row wrap>
+    <v-flex  xs6 sm6 md4 v-for="n in 6" :key="n">
       <v-list dense>
         <v-list-tile @click="">
           <v-list-tile-content>
