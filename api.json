@@ -1,0 +1,5 @@
+{
+    "host":"admin.test",
+    "prefix":"/api/v1",
+    "port":80
+}

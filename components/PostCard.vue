@@ -3,7 +3,7 @@
         <v-card-media
                 class="white--text"
                 height="170px"
-                :src="post.imgUrl"
+                :src="post.avatar"
         >
             <v-container fill-height fluid>
                 <v-layout>
@@ -14,7 +14,7 @@
             </v-container>
         </v-card-media>
         <v-card-text style="min-height: 138px;">
-            {{ post.content }}
+            {{ post.body | innerHTML }}
         </v-card-text>
         <v-card-actions>
             <v-btn icon class="red--text">

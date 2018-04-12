@@ -1,4 +1,8 @@
+const fs = require('fs')
+const {host, prefix, port} = JSON.parse(fs.readFileSync('./api.json'))
+
 const webpack = require('webpack')
+
 module.exports = {
   /*
    ** Headers of the page
@@ -12,11 +16,16 @@ module.exports = {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
-      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'},
+      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
       // {rel: 'stylesheet', type: 'text/css', href: 'https://unpkg.com/vuetify/dist/vuetify.min.css'}
     ]
   },
-  plugins: ['~/plugins/vuetify.js'],
+  plugins: [
+    '~/plugins/vuetify.js',
+    '~/plugins/axios.js',
+    '~/plugins/vue-lazyload.js',
+    '~/plugins/filter.js'
+  ],
   css: [
     '~/assets/style/app.styl'
   ],
@@ -28,13 +37,25 @@ module.exports = {
   modules: [
     // With options
     // ['@nuxtjs/localtunnel', { subdomain: 'laizong' }]
+    '@nuxtjs/axios'
   ],
+  axios: {
+    host,
+    prefix,
+    port
+  },
+
+  env: {
+    API_SERVICE: `http://${host}:${port}`
+  },
   /*
    ** Build configuration
    */
   build: {
     vendor: [
-      '~/plugins/vuetify.js'
+      '~/plugins/vuetify.js',
+      'lodash',
+      'vue-lazyload'
     ],
     extractCSS: true,
     postcss: [],
@@ -57,9 +78,12 @@ module.exports = {
       //   })
       // }
     },
-    plugins:[
+    plugins: [
       new webpack.LoaderOptionsPlugin({
         minimize: true
+      }),
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
       })
     ]
   }

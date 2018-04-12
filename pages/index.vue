@@ -1,17 +1,29 @@
 <template>
     <div>
-        <section>
-            <v-parallax src="https://photo.tuchong.com/469811/f/26332228.jpg" height="600">
+        <section v-if="banners.main">
+            <v-parallax :src="banners.main.avatar" height="600">
                 <v-layout
                         column
                         align-center
                         justify-center
                         class="white--text"
                 >
-                    <img src="/v.png" alt="Vuetify.js" height="200">
-                    <h1 class="white--text mb-2 display-1 text-xs-center">呼唤世界，向你告白‖只诉过往，不言离殇</h1>
+                    <h1 class="white--text mb-2 display-1 text-xs-center">{{banners.main.title}}</h1>
                     <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
                     <v-btn
+                    v-if="banners.main.post_id"
+                    nuxt
+                    :to="{name:'post-id',params:{id:banners.main.post_id}}"
+                            class="blue lighten-2 mt-5"
+                            style="color:#64b5f6 !important;"
+                            large
+                            outline
+                    >
+                        Read More
+                    </v-btn>
+                    <v-btn
+                    v-else
+                    :href="banners.main.link"
                             class="blue lighten-2 mt-5"
                             dark
                             large
@@ -40,8 +52,8 @@
                 <v-flex xs12 fill-height>
                     <v-container grid-list-xl>
                         <v-layout row wrap>
-                            <v-flex xs12 md4 v-for="post in posts" :key="post.title">
-                                <post-card :post="post"/>
+                            <v-flex xs12 md4 v-for="hot in body.hot" :key="hot.title">
+                                <post-card :post="hot"/>
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -49,10 +61,10 @@
             </v-layout>
         </section>
 
-        <section>
-            <v-parallax src="https://photo.tuchong.com/1370833/ft640/20501041.webp" height="380">
+        <section v-if="banners.mid">
+            <v-parallax :src="banners.mid.avatar" height="380">
                 <v-layout column align-center justify-center>
-                    <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
+                    <div class="headline white--text mb-3 text-xs-center">{{banners.mid.title}}</div>
                     <em>Kick-start your application today</em>
                     <v-btn
                             class="blue lighten-2 mt-5"
@@ -77,13 +89,13 @@
         <section>
             <v-container grid-list-lg>
                 <v-layout row wrap justify-center>
-                    <v-flex d-flex xs12 sm6 md4>
-                        <media-post/>
+                    <v-flex d-flex xs12 sm6 md4 v-if="!mediaPostIsEmpty">
+                        <media-post :item="body.recommend"/>
                     </v-flex>
-                    <v-flex d-flex xs12 sm6 md4>
+                    <v-flex d-flex xs12 sm6 v-bind="autoMd">
                         <hot-list/>
                     </v-flex>
-                    <v-flex d-flex xs12 sm6 md4>
+                    <v-flex d-flex xs12 sm6 v-bind="autoMd">
                         <hot-list/>
                     </v-flex>
                 </v-layout>
@@ -107,40 +119,33 @@
 <script>
   export default {
     components: {
-      'middle-title-list': () => import ('~/components/MiddleTitleList'),
-      'hot-list': () => import ('~/components/HotList'),
-      'media-post': () => import ('~/components/MediaPost'),
+      'middle-title-list': () => import('~/components/MiddleTitleList'),
+      'hot-list': () => import('~/components/HotList'),
+      'media-post': () => import('~/components/MediaPost'),
       'post-card': () => import('~/components/PostCard'),
-      'main-list': () => import ('~/components/MainList')
+      'main-list': () => import('~/components/MainList')
     },
-    data () {
-      return {
-        posts: [
-          {
-            title: 'Fusce ullamcorper tellus',
-            content: 'Fusce ullamcorper tellus sed maximus rutrum. Donec imperdiet ultrices maximus. Donec non tellus non neque pellentesque fermentum. Aenean in pellentesque urna.',
-            body: 'Fusce ullamcorper tellus sed maximus rutrum. Donec imperdiet ultrices maximus. Donec non tellus non neque pellentesque fermentum. Aenean in pellentesque urna.',
-            imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/drop.jpg',
-            avatar: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/drop.jpg',
-            read_num: 2311
-          },
-          {
-            title: 'Donec vitae suscipit lectus, a luctus diam.',
-            content: 'Donec vitae suscipit lectus, a luctus diam. Proin vitae felis gravida, lobortis massa sit amet, efficitur erat. Morbi vel ultrices nisi.',
-            body: 'Donec vitae suscipit lectus, a luctus diam. Proin vitae felis gravida, lobortis massa sit amet, efficitur erat. Morbi vel ultrices nisi.',
-            imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/docks.jpg',
-            avatar: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/docks.jpg',
-            read_num: 123
-          },
-          {
-            title: 'Vestibulum condimentum quam',
-            content: 'At sagittis sapien vulputate. Vivamus laoreet lacus id magna rutrum dapibus. Donec vel pellentesque arcu. Maecenas mollis odio tempus felis elementum commodo.',
-            body: 'At sagittis sapien vulputate. Vivamus laoreet lacus id magna rutrum dapibus. Donec vel pellentesque arcu. Maecenas mollis odio tempus felis elementum commodo.',
-            imgUrl: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/plane.jpg',
-            avatar: 'https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/cards/plane.jpg',
-            read_num: 98
-          }
-        ]
+    async asyncData ({store}) {
+      let [data, body, byCatelog, posts] = await Promise.all([
+        store.dispatch('client'),
+        store.dispatch('body'),
+        store.dispatch('byCatelog', {catelog_id: 4}),
+        store.dispatch('posts')
+      ])
+      const group = _.groupBy(data.banners, 'type')
+      let banners = {
+        main: _.head(_.get(group, 'main')),
+        mid: _.head(_.get(group, 'mid'))
+      }
+
+      return {config: data, banners, body, byCatelog, posts}
+    },
+    computed: {
+      mediaPostIsEmpty () {
+        return _.isEmpty(this.body.recommend)
+      },
+      autoMd () {
+        return {md6: this.mediaPostIsEmpty, md4: !this.mediaPostIsEmpty}
       }
     }
   }
