@@ -1,11 +1,11 @@
 <template>
   <v-card class="elevation-0">
-    <v-card-media :src="data.avatar" height="200px">
+    <v-card-media :src="item.avatar" height="200px">
     </v-card-media>
     <v-card-title primary-title>
       <div>
-        <h3 class="headline mb-0">{{data.title}}</h3>
-        <div>{{data.body | innerHTML}}...</div>
+        <h3 class="headline mb-0">{{item.title}}</h3>
+        <div>{{item.body | innerHTML}}...</div>
       </div>
     </v-card-title>
     <v-card-actions>
@@ -18,7 +18,7 @@
 export default {
   name: 'media-post',
   props: {
-    item: Array
+    item: Object
   },
   computed: {
     data () {

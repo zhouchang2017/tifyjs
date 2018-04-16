@@ -80,7 +80,7 @@
             <v-container grid-list-lg>
                 <v-layout row wrap justify-center class="my-2">
                     <v-flex xs12>
-                        <middle-title-list/>
+                        <middle-title-list :list="body.hotList"/>
                     </v-flex>
                 </v-layout>
             </v-container>
