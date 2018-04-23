@@ -92,11 +92,8 @@
                     <v-flex d-flex xs12 sm6 md4 v-if="!mediaPostIsEmpty">
                         <media-post :item="body.recommend"/>
                     </v-flex>
-                    <v-flex d-flex xs12 sm6 v-bind="autoMd">
-                        <hot-list/>
-                    </v-flex>
-                    <v-flex d-flex xs12 sm6 v-bind="autoMd">
-                        <hot-list/>
+                    <v-flex d-flex xs12 sm6 v-bind="autoMd" v-for="(posts,index) in random" :key="index">
+                        <hot-list :posts="posts"/>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -137,8 +134,8 @@
         main: _.head(_.get(group, 'main')),
         mid: _.head(_.get(group, 'mid'))
       }
-
-      return {config: data, banners, body, byCatelog, posts}
+      let random = _.chunk(body.randomPost, 5)
+      return {config: data, banners, body, byCatelog, posts, random}
     },
     computed: {
       mediaPostIsEmpty () {

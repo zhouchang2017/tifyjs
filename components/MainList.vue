@@ -1,22 +1,25 @@
 <template>
     <v-card class="elevation-0">
         <v-list subheader>
-            <v-container v-for="(post,index) in posts.data" :key="post.title">
+            <v-container v-for="(post,index) in posts.data"
+                         :key="post.title">
                 <template>
                     <v-layout row>
                         <v-flex xs8>
                             <div>
 
                                 <v-list-tile-content>
-                                    <v-list-tile-title class="headline" style="height: auto;">
-                                        <nuxt-link to="/post/1">{{ post.title }}</nuxt-link>
+                                    <v-list-tile-title class="headline"
+                                                       style="height: auto;">
+                                        <nuxt-link :to="{name:'post-id',params:{id:post.id}}">{{ post.title }}</nuxt-link>
                                     </v-list-tile-title>
                                     <div class="text--primary">{{ post.body|innerHTML }}</div>
                                 </v-list-tile-content>
                             </div>
                         </v-flex>
                         <v-flex xs4>
-                            <img class="post-list__avatar" :src=" post.avatar "
+                            <img class="post-list__avatar"
+                                 :src=" post.avatar "
                                  alt="">
                         </v-flex>
                     </v-layout>
@@ -35,24 +38,26 @@
     </v-card>
 </template>
 <script>
-  export default {
-    props: {
-      posts: {
-        type: Object,
-        default: () => ([{
+export default {
+  props: {
+    posts: {
+      type: Object,
+      default: () => [
+        {
           title: '特别的日子送上别致的美食——清水牛肉&椒盐玉米仔排',
-          body: '2018年3月18日 星期天 晴 二月二，龙抬头。今天是个好日子，对我来说也是个特别的日子...'
-        }])
-      }
+          body:
+            '2018年3月18日 星期天 晴 二月二，龙抬头。今天是个好日子，对我来说也是个特别的日子...'
+        }
+      ]
     }
   }
+}
 </script>
 <style scoped>
-    .post-list__avatar {
-        object-fit: cover;
-        height: 125px;
-        width: 100%;
-        border-radius: 4px;
-    }
-
+.post-list__avatar {
+  object-fit: cover;
+  height: 125px;
+  width: 100%;
+  border-radius: 4px;
+}
 </style>
