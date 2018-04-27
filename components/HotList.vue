@@ -3,7 +3,7 @@
     <!-- <panel-header iconL="explore" iconR="list" title="一周热点"/> -->
     <v-progress-linear height="3" :value="50" class="my-0"></v-progress-linear>
     <v-list three-line dense>
-      <v-list-tile v-for="post in posts" :key="post.id" @click="">
+      <v-list-tile v-for="post in posts" :key="post.id" nuxt :to="{name:'post-id',params:{id:post.id}}">
         <v-list-tile-content>
           <v-list-tile-title>
             <h3>{{post.title}}</h3>

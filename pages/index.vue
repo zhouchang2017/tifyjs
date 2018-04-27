@@ -45,8 +45,8 @@
                     <div class="text-xs-center">
                         <h2 class="headline">The best way to start developing</h2>
                         <span class="subheading">
-                Cras facilisis mi vitae nunc
-              </span>
+                            Cras facilisis mi vitae nunc
+                        </span>
                     </div>
                 </v-flex>
                 <v-flex xs12 fill-height>
@@ -143,6 +143,11 @@
       },
       autoMd () {
         return {md6: this.mediaPostIsEmpty, md4: !this.mediaPostIsEmpty}
+      }
+    },
+    methods:{
+      handler (component) {
+        console.log('this component is showing')
       }
     }
   }

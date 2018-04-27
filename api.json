@@ -1,5 +1,5 @@
 {
-    "host":"admin.test",
+    "host":"laravel-vuetify.test",
     "prefix":"/api/v1",
     "port":80
 }

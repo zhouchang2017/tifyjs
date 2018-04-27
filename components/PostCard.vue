@@ -14,7 +14,7 @@
             </v-container>
         </v-card-media>
         <v-card-text style="min-height: 138px;">
-            {{ post.body | innerHTML }}
+            {{ post.desc }}
         </v-card-text>
         <v-card-actions>
             <v-btn icon class="red--text">
@@ -27,7 +27,7 @@
                 <v-icon medium>fa-facebook</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn flat class="blue--text">Read More</v-btn>
+            <v-btn nuxt flat class="blue--text" :to="{name:'post-id',params:{id:post.id}}">Read More</v-btn>
         </v-card-actions>
     </v-card>
 </template>

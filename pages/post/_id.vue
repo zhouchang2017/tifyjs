@@ -37,9 +37,16 @@ export default {
       to: {name: 'index'}
     },
     {
+      text: '文章分类',
+      disabled: false,
+      nuxt: true,
+      to: {name: 'catelog'}
+    },
+    {
       text: catelog.name,
 	  	disabled: false,
-      nuxt: false
+      nuxt: true,
+      to: {name: 'catelog-id',params:{id:catelog.id}}
     },
     {
       text: data.title,

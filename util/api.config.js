@@ -9,6 +9,7 @@ module.exports = {
     show: id => `client/posts/${id}`
   },
   catelogs: {
-    index: () => `client/catelogs`
+    index: () => `client/catelogs`,
+    show: id => `client/catelogs/${id}`
   }
 }

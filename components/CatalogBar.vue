@@ -46,7 +46,10 @@ export default {
   computed: {
     ...mapGetters('catelogs', {
       catelogs: 'index'
-    })
+    }),
+		catelogsFilter(){
+			return this.catelogs.filter(item=>item.posts.length>0)
+		}
   }
 }
 </script>

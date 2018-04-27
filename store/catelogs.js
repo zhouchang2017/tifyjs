@@ -27,6 +27,9 @@ export const actions = {
       commit('SET_CATELOGS', catelogs)
     }
     return getters.index
+  },
+  show(ctx,{id,qs = null}){
+    return this.$axios.$get(api.catelogs.show(id),{params:qs})
   }
 }
 

@@ -10,7 +10,7 @@
     </v-card-title>
     <v-card-actions>
       <v-btn flat color="orange">Share</v-btn>
-      <v-btn flat color="orange">Explore</v-btn>
+      <v-btn flat color="orange" nuxt :to="{name:'post-id',params:{id:item.id}}">READ MORE</v-btn>
     </v-card-actions>
   </v-card>
 </template>

@@ -1,36 +1,15 @@
 <template>
-        <v-container grid-list-md class="mb-1">
+  <v-container grid-list-md class="mb-1">
 			<v-layout row wrap>
 				<v-flex d-flex xs12 sm12 md12>
 					<breadcrumbs />
 				</v-flex>
-				<v-flex xs12 md4 v-for="catelog in options.catelogs"
+				<v-flex xs12 md4 v-for="catelog in catelogs"
                                 :key="catelog.id">
-                    <catelog-card :item="catelog" />
-                </v-flex>
-                <nuxt/>
+            <catelog-card :item="catelog" />
+        </v-flex>
 			</v-layout>
-        </v-container>
-    <!-- <section>
-        <v-layout column
-                  wrap>
-                    <v-container>
-                    <v-flex d-flex xs12 sm12 md12>
-                                <breadcrumbs />
-                            </v-flex>
-                    </v-container>
-                    <v-container grid-list-xl>
-                        <v-layout row wrap>
-                            
-                            <v-flex xs12 md4 v-for="catelog in options.catelogs"
-                                :key="catelog.id">
-                                <catelog-card :item="catelog" />
-                            </v-flex>
-                        </v-layout>
-                    </v-container>
-               
-        </v-layout>
-    </section> -->
+  </v-container>
 </template>
 
 <script>
@@ -42,7 +21,10 @@ export default {
     'breadcrumbs': () => import('~/components/Breadcrumbs')
   },
   computed: {
-    ...mapGetters(['options'])
+    ...mapGetters(['options']),
+    ...mapGetters('catelogs', {
+      catelogs: 'index'
+    }),
   },
   fetch ({store}) {
     let items = [{
