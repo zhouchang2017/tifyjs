@@ -8,6 +8,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "init": "pm2 start ./node_modules/nuxt/bin/nuxt-start --name client_01 -i max --watch -- -p 3000 -H 0.0.0.0",
+    "stop": "pm2 stop client_01 && pm2 delete client_01",
     "generate": "nuxt generate"
   },
   "config": {
