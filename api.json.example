@@ -1,5 +1,6 @@
 {
     "host":"laravel-vuetify.test",
     "prefix":"/api/v1",
-    "port":80
+    "port":80,
+    "header":"nuxt_01"
 }

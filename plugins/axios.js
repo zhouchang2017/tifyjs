@@ -1,5 +1,5 @@
 export default function ({ $axios, redirect }) {
-  $axios.setHeader('nuxt-id', 'nuxt_01')
+  $axios.setHeader('nuxt-id', process.env.API_REQUEST_HEADER)
 //   $axios.onRequest(config => {
 //     console.log('Making request to ' + config.url)
 //   })

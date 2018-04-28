@@ -1,5 +1,5 @@
 const fs = require('fs')
-const {host, prefix, port} = JSON.parse(fs.readFileSync('./api.json'))
+const {host, prefix, port, header} = JSON.parse(fs.readFileSync('./api.json'))
 
 const webpack = require('webpack')
 
@@ -46,7 +46,8 @@ module.exports = {
   },
 
   env: {
-    API_SERVICE: `http://${host}:${port}`
+    API_SERVICE: `http://${host}:${port}`,
+    API_REQUEST_HEADER: header
   },
   /*
    ** Build configuration
